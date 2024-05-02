@@ -24,5 +24,4 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_02_215442) do
     t.integer "discount", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
   end
-
 end
