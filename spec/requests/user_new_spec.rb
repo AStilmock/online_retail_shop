@@ -1,9 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe 'User Registration Process' do
+RSpec.describe 'User Registration Process', type: :feature do
   describe 'user can create account' do
-    it 'user#new' do
+    before :each do
       visit new_user_path
+    end
+    it 'user#new' do
+      # visit new_user_path
       expect(page).to have_content('Create an Account')
       expect(page).to have_field('email')
       expect(page).to have_field('password')
