@@ -1,0 +1,3 @@
+class SaleInvoice < ApplicationRecord
+  
+end
