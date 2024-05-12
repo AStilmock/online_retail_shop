@@ -1,0 +1,22 @@
+<%= form_with url: users_path, method: :post do |f| %>
+  <div class="field">
+    <%= f.label  :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div>
+    <%= hidden_field_tag :permission, 0 %>
+    <%= hidden_field_tag :discount, 0 %>
+    <%= hidden_field_tag :salt, "XYZ" %>
+  </div>
+  <div class="actions">
+      <%= f.submit "Create Account" %>
+  </div>
+<% end %>
