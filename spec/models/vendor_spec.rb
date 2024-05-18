@@ -11,6 +11,7 @@ RSpec.describe Vendor, type: :model do
 
   describe 'associations' do  
     it { should have_many(:items)}
+    it { should have_many(:product_categories).through(:items)}
     it { should have_many(:purchase_orders)}
   end
 end
