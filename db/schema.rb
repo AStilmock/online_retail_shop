@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_12_202736) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_18_213757) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_12_202736) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "purchase_order_items", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "purchase_order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "quantity"
+    t.index ["item_id"], name: "index_purchase_order_items_on_item_id"
+    t.index ["purchase_order_id"], name: "index_purchase_order_items_on_purchase_order_id"
   end
 
   create_table "purchase_orders", force: :cascade do |t|
@@ -151,6 +161,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_12_202736) do
   add_foreign_key "invoice_items", "users"
   add_foreign_key "items", "product_categories"
   add_foreign_key "items", "vendors"
+  add_foreign_key "purchase_order_items", "items"
+  add_foreign_key "purchase_order_items", "purchase_orders"
   add_foreign_key "purchase_orders", "items"
   add_foreign_key "purchase_orders", "users"
   add_foreign_key "purchase_orders", "vendors"
