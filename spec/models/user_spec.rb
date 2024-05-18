@@ -11,6 +11,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:sales).through(:sale_invoices) }
     it { should have_many(:invoices).through(:sale_invoices) }
     it { should have_many(:invoice_items) }
+    it { should have_many(:items).through(:invoice_items) }
     it { should have_many(:purchase_orders)}
   end
 end
