@@ -1,0 +1,8 @@
+<h1> Hello <%= @user.email %> </h1>
+<h1>Find yer loot for all <%= @category.name %> here!</h1>
+
+<div>
+  <% @items.each do |item| %>
+    <%= link_to item.name, user_item_path(@user.id, item.id) %>
+  <% end %>
+</div>
