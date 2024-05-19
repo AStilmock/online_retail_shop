@@ -3,3 +3,11 @@
 <H3> All sales are final. </H3>
 <H3> And all merchandise is fake. </H3>
 
+<div>
+  <% if current_user %>
+    <%= link_to 'Shopping Page', user_shopping_path(@user.id) %>
+  <% else %>
+    <%= link_to 'Shopping Page', shopping_path %>
+  <% end %>
+</div>
+
