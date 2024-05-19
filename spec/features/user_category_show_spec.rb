@@ -1,14 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe 'Shopping Index Page', type: :feature do
-  describe 'GET /user/:id/shopping' do
-    before :each do
+RSpec.describe 'User Category Show Page', type: :feature do
+  describe 'GET /user/:id/categories/:id' do
+    before :each do 
       @user = User.create!(email: 'sandemasmail@email.com', password: 'beexcellent', password_confirmation: 'beexcellent')
 
       @category1 = ProductCategory.create!(name: 'Shirts', description: 'T-shirts')
       @category2 = ProductCategory.create!(name: 'Hoodies', description: 'Hoodies')
       @category3 = ProductCategory.create!(name: 'Hats', description: 'Hats')
       @category4 = ProductCategory.create!(name: 'Stickers', description: 'Stickers')
+
+      @vendor = Vendor.create!(
+        name: 'Bill & Teds excellent merchandise', 
+        description: 'Merchandise for Bill & Ted fans', 
+        address: '1234 Wyld Stallyns Way, San Dima, CA 91773', 
+        email: 'beexcellent@gmail.com', 
+        phone: '555-555-5555'
+        )
 
       @vendor = Vendor.create!(
         name: 'Bill & Teds excellent merchandise', 
@@ -32,82 +40,67 @@ RSpec.describe 'Shopping Index Page', type: :feature do
       fill_in 'email', with: @user.email
       fill_in 'password', with: "beexcellent"
       click_button 'Login'
+      click_link('Shopping Page')
     end
 
     it 'page has content' do
-      click_link('Shopping Page')
-      expect(current_path).to eq(user_shopping_path(@user.id))
-      expect(page).to have_content('Here be the shopping page - view our inventory selection below!')
       expect(page).to have_content("Hello #{@user.email}")
-      expect(page).to have_content('Sample Item List')
-      expect(page).to have_content('Product Category List')
+      expect(page).to have_content("Here be the shopping page - view our inventory selection below!")
+    end
+    
+    it 'shirts page shows shirt items' do
+      click_link('Shirts')
+      expect(page).to have_content("Hello #{@user.email}")
+      expect(page).to have_content("Find yer loot for all #{@category1.name} here!")
+      expect(page).to have_link("#{@item1.name}")
+      expect(page).to have_link("#{@item2.name}")
     end
 
-    it 'page has category links' do
-      click_link('Shopping Page')
-      expect(page).to have_link(@category1.name)
-      expect(page).to have_link(@category2.name)
-      expect(page).to have_link(@category3.name)
-      expect(page).to have_link(@category4.name)
+    it 'hoodies page shows shirt items' do
+      click_link('Hoodies')
+      expect(page).to have_content("Hello #{@user.email}")
+      expect(page).to have_content("Find yer loot for all #{@category2.name} here!")
+      expect(page).to have_link("#{@item3.name}")
+      expect(page).to have_link("#{@item4.name}")
     end
 
-    it 'page has item links' do
-      click_link('Shopping Page')
-      expect(page).to have_link(@item1.name)
-      expect(page).to have_link(@item2.name)
-      expect(page).to have_link(@item3.name)
-      expect(page).to have_link(@item4.name)
-      expect(page).to have_link(@item5.name)
-      expect(page).to have_link(@item6.name)
-      expect(page).to have_link(@item7.name)
-      expect(page).to have_link(@item8.name)
-      expect(page).to have_link(@item9.name)
+    it 'hats page shows hat items' do
+      click_link('Hats')
+      expect(page).to have_content("Hello #{@user.email}")
+      expect(page).to have_content("Find yer loot for all #{@category3.name} here!")
+      expect(page).to have_link("#{@item5.name}")
+      expect(page).to have_link("#{@item6.name}")
     end
 
-    it 'shirts link goes to shirt category show page' do
-      click_link('Shopping Page')
-      click_link(@category1.name)
-      expect(current_path).to eq(user_category_path(@category1.id))
+    it 'stickers page shows sticker items' do
+      click_link('Stickers')
+      expect(page).to have_content("Hello #{@user.email}")
+      expect(page).to have_content("Find yer loot for all #{@category4.name} here!")
+      expect(page).to have_link("#{@item7.name}")
+      expect(page).to have_link("#{@item8.name}")
+      expect(page).to have_link("#{@item9.name}")
     end
-
-    it 'hoodies link goes to hoodie category show page' do 
-      click_link('Shopping Page')
-      click_link(@category2.name)
-      expect(current_path).to eq(user_category_path(@category2.id))
-    end
-
-    it 'hats link goes to hat category show page' do 
-      click_link('Shopping Page')
-      click_link(@category3.name)
-      expect(current_path).to eq(user_category_path(@category3.id))
-    end
-
-    it 'stickers link goes to sticker category show page' do 
-      click_link('Shopping Page')
-      click_link(@category4.name)
-      expect(current_path).to eq(user_category_path(@category4.id))
-    end
-
-    it 'shirt link goes to shirt item show page' do
-      click_link('Shopping Page')
+    
+    it 'shirt links go to shirt item show page' do
+      click_link('Shirts')
       click_link(@item1.name)
       expect(current_path).to eq(user_item_path(@item1.id))
     end
-    
-    it 'hoodie link goes to hoodie item show page' do
-      click_link('Shopping Page')
+
+    it 'hoodie links go to hoodie item show page' do
+      click_link('Hoodies')
       click_link(@item3.name)
       expect(current_path).to eq(user_item_path(@item3.id))
     end
-    
-    it 'hat link goes to hat item show page' do
-      click_link('Shopping Page')
+
+    it 'Hats links go to shirt item show page' do
+      click_link('Hats')
       click_link(@item5.name)
       expect(current_path).to eq(user_item_path(@item5.id))
     end
-    
-    it 'sticker link goes to sticker item show page' do
-      click_link('Shopping Page')
+
+    it 'stickers links go to shirt item show page' do
+      click_link('Stickers')
       click_link(@item7.name)
       expect(current_path).to eq(user_item_path(@item7.id))
     end
