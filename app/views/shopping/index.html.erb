@@ -13,7 +13,7 @@
   <h2> 'Product Category List' </h2>
     <ul>
       <% @categories.each do |cat| %>
-        <li><%= link_to cat.name, shopping_category_path(cat.id) %></li>
+        <li><%= link_to cat.name, categories_path(cat.id) %></li>
       <% end %>
     </ul>
 </div>

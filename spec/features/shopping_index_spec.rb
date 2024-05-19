@@ -56,22 +56,22 @@ RSpec.describe 'Shopping Index Page', type: :feature do
 
     it 'shirts link goes to shirt category show page' do
       click_link(@category1.name)
-      expect(current_path).to eq(shopping_category_path(@category1.id))
+      expect(current_path).to eq(categories_path(@category1.id))
     end
 
     it 'hoodies link goes to hoodie category show page' do 
       click_link(@category2.name)
-      expect(current_path).to eq(shopping_category_path(@category2.id))
+      expect(current_path).to eq(categories_path(@category2.id))
     end
 
     it 'hats link goes to hat category show page' do 
       click_link(@category3.name)
-      expect(current_path).to eq(shopping_category_path(@category3.id))
+      expect(current_path).to eq(categories_path(@category3.id))
     end
 
     it 'stickers link goes to sticker category show page' do 
       click_link(@category4.name)
-      expect(current_path).to eq(shopping_category_path(@category4.id))
+      expect(current_path).to eq(categories_path(@category4.id))
     end
 
     it 'shirt link goes to shirt item show page' do
