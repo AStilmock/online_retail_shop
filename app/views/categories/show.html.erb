@@ -1,0 +1,7 @@
+<h1>Find yer loot for all <%= @category.name %> here!</h1>
+
+<div>
+  <% @items.each do |item| %>
+    <%= link_to item.name, items_path(item.id) %>
+  <% end %>
+</div>
