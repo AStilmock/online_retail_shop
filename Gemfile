@@ -61,6 +61,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
   gem "sorcery"
+  gem "figaro"
 end
 
 group :development do
