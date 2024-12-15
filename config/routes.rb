@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # resources :categories, only: [:index, :show]
   resources :items, only: [:index, :show]
   
-  get 'landing_page' => 'users#index'
+  get 'online-retail-shop.vercel.app/' => 'users#index'
   get 'login' => 'user_sessions#new', :as => :login
   post 'login' => "user_sessions#create"
   post 'logout' => 'user_sessions#destroy', :as => :logout
