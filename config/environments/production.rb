@@ -44,7 +44,9 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   # config.action_cable.url = "wss://example.com/cable"
   # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
-
+  # config.hosts << "online-retail-shop.vercel.app"
+  # config.action_mailer.default_url_options = { host: "online-retail-shop.vercel.app", protocol: "https" }
+  # config.action_controller.default_url_options = { host: "online-retail-shop.vercel.app", protocol: "https" }
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
