@@ -83,4 +83,5 @@ production:
   <<: *default
   database: online_retail_shop_production
   username: online_retail_shop
-  password: <%= ENV["ONLINE_RETAIL_SHOP_DATABASE_PASSWORD"] %>
+  host: https://online-retail-shop-i7ki.onrender.com
+  # password: <%= ENV["ONLINE_RETAIL_SHOP_DATABASE_PASSWORD"] %>
