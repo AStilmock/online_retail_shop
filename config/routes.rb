@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   # resources :categories, only: [:index, :show]
   resources :items, only: [:index, :show]
   
+  get '/' => 'users#index'
   get 'online-retail-shop.vercel.app/' => 'users#index'
   get 'login' => 'user_sessions#new', :as => :login
   post 'login' => "user_sessions#create"
-  post 'logout' => 'user_sessions#destroy', :as => :logout
+  get 'logout' => 'user_sessions#destroy', :as => :logout
 
   get '/shopping', to: 'shopping#index'
   get '/categories', to: 'categories#index'
