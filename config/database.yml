@@ -81,8 +81,8 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
-  # database: online_retail_shop_production
-  # username: online_retail_shop
-  # host: online-retail-shop-i7ki.onrender.com
-  # password: <%= ENV["ONLINE_RETAIL_SHOP_DATABASE_PASSWORD"] %>
+  # url: <%= ENV["DATABASE_URL"] %>
+  database: online_retail_shop_production
+  username: online_retail_shop
+  host: online-retail-shop-i7ki.onrender.com
+  password: <%= ENV["ONLINE_RETAIL_SHOP_DATABASE_PASSWORD"] %>
