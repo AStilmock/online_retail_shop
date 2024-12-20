@@ -1,15 +1,15 @@
-<%= form_with url: users_path, method: :post do |f| %>
-  <div class="field">
-    <%= f.label  :email %>
-    <%= f.text_field :email %>
+<%= form_with url: users_path, method: :post, data: { format_target: "form" }, class: "w-1/2 mx-auto space-y-4" do |f| %>
+  <div class="field flex flex-col items-start">
+    <%= f.label  :email, class: "font-bold" %>
+    <%= f.text_field :email, class: "border rounded p-2 w-full" %>
   </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
+  <div class="field flex flex-col items-start">
+    <%= f.label :password, class: "font-bold" %>
+    <%= f.password_field :password, class: "border rounded p-2 w-full" %>
   </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
+  <div class="field flex flex-col items-start">
+    <%= f.label :password_confirmation, class: "font-bold" %>
+    <%= f.password_field :password_confirmation, class: "border rounded p-2 w-full" %>
   </div>
   <div>
     <%= hidden_field_tag :permission, 0 %>
@@ -17,6 +17,6 @@
     <%= hidden_field_tag :salt, "XYZ" %>
   </div>
   <div class="actions">
-      <%= f.submit "Create Account" %>
+    <%= f.submit "Create Account", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
   </div>
 <% end %>
