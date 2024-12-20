@@ -1,13 +1,23 @@
-<h1> WELCOME TO THE TEST ONLINE RETAIL STORE! </h1>
-
-<H3> All sales are final. </H3>
-<H3> And all merchandise is fake. </H3>
-
-<div>
-  <% if current_user %>
-    <%= link_to 'Shopping Page', user_shopping_path(@user.id) %>
-  <% else %>
-    <%= link_to 'Shopping Page', shopping_path %>
-  <% end %>
+<div data-controller="format">
+  <div data-controller="format">
+    <div data-format-target="message">
+      <h1 class="text-4xl font-bold text-center text-blue-600">
+        WELCOME TO THE TEST ONLINE RETAIL STORE!
+      </h1>
+      <p class="text-base text-gray-600 text-center">
+        All sales are final. And all merchandise is fake.
+      </p>
+    </div>
+  </div>
+  <div data-controller="format">
+    <div>
+      <% if current_user %>
+        <%= link_to 'Shopping Page', user_shopping_path(@user.id), data: { format_target: "link" } %>
+      <% else %>
+        <%= link_to 'Shopping Page', shopping_path, data: { format_target: "link" } %>
+      <% end %>
+    </div>
+  </div>
 </div>
+
 

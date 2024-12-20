@@ -1,13 +1,17 @@
-<%= form_with url: login_path, method: :post do |f| %>
-  <div class="field">
-    <%= f.label  :email %>
-    <%= f.text_field :email %>
+<%= form_with url: login_path, method: :post, data: { controller: "format", target: "format.form" }, class: "w-full max-w-md mx-auto" do |f| %>
+  <h1 class="text-2xl font-bold mb-4"></h1>
+
+  <div class="field" data-target="format.input">
+    <%= f.label :email, class: "font-bold" %>
+    <%= f.text_field :email, class: "border rounded p-2 w-full", data: { target: "format.input" } %>
   </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
+
+  <div class="field" data-target="format.input">
+    <%= f.label :password, class: "font-bold" %><br />
+    <%= f.password_field :password, class: "border rounded p-2 w-full", data: { target: "format.input" } %>
   </div>
+
   <div class="actions">
-    <%= f.submit "Login" %>
+    <%= f.submit "Login", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
   </div>
 <% end %>

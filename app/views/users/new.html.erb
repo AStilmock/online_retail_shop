@@ -1,5 +1,6 @@
-<h1> Create an Account </h1>
+<div data-controller="format">
+  <h1>Create an Account</h1>
+  <%= render partial: 'shared/registerform' %>
+  <%= link_to 'Back', root_path, class: "text-blue-600 hover:text-blue-800", data: { target: "format.link" } %>
+</div>
 
-<%= render partial: 'shared/registerform' %>
-
-<%= link_to 'Back', users_path %>
