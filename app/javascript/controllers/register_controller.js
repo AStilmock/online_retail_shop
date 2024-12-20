@@ -4,14 +4,15 @@ export default class extends Controller {
   static targets = ["link", "form"];
 
   connect() {
-
     if (this.hasFormTarget) {
       this.alignForm();
+    }
+    if (this.hasLinkTarget) {
+      this.styleBackLink();
     }
   }
 
   alignForm() {
-
     this.formTarget.style.display = "flex";
     this.formTarget.style.flexDirection = "column";
     this.formTarget.style.alignItems = "flex-start"; // Align to the left
@@ -37,6 +38,24 @@ export default class extends Controller {
       submitButton.style.border = "none";
       submitButton.style.borderRadius = "4px";
       submitButton.style.cursor = "pointer";
+    }
+  }
+
+  styleBackLink() {
+    if (this.hasLinkTarget) {
+      const backLink = this.linkTarget;
+      // Apply blue color to the link
+      backLink.style.color = "#3182ce";  // Blue color
+      backLink.style.textDecoration = "none";  // Remove underline
+
+      // Apply hover effect
+      backLink.addEventListener("mouseover", () => {
+        backLink.style.color = "#2b6cb0";  // Darker blue on hover
+      });
+
+      backLink.addEventListener("mouseout", () => {
+        backLink.style.color = "#3182ce";  // Reset color on mouse out
+      });
     }
   }
 }
