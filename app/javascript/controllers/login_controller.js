@@ -1,34 +1,31 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["link", "form", "input"];
+  static targets = ["form", "input"];  // Target form and input fields
 
   connect() {
-    this.linkTargets.forEach((link) => {
-      link.style.color = "blue";  // Set default color for links
-    });
-
-    if (this.hasFormTarget) {
-      this.alignForm();
-    }
+    console.log("Login controller connected!");
+    this.alignForm();
   }
 
   alignForm() {
+
     this.formTarget.style.display = "flex";
     this.formTarget.style.flexDirection = "column";
-    this.formTarget.style.alignItems = "flex-start";
-    this.formTarget.style.maxWidth = "500px";  // Set max-width for better layout
-    this.formTarget.style.margin = "0 auto"; // Center the form
+    this.formTarget.style.alignItems = "flex-start"; // Align form elements to the left
+    this.formTarget.style.maxWidth = "500px";  // Optional max-width
+    this.formTarget.style.margin = "0"; // Remove centering
+    this.formTarget.style.margin = "20px"; // Add space from the header
 
-    // Apply specific styling to form fields
+    // Ensure all form fields are aligned to the left
     this.formTarget.querySelectorAll(".field").forEach((field) => {
-      field.style.marginBottom = "1rem";
+      field.style.marginBottom = "1rem"; // Add space between fields
       field.style.display = "flex";
       field.style.flexDirection = "column";
-      field.style.alignItems = "flex-start";
+      field.style.alignItems = "flex-start";  // Align labels and inputs to the left
     });
 
-    // Style the submit button
+    // Style submit button
     const submitButton = this.formTarget.querySelector(".actions input[type='submit']");
     if (submitButton) {
       submitButton.style.marginTop = "1rem";

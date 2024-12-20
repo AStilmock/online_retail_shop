@@ -4,9 +4,6 @@ export default class extends Controller {
   static targets = ["link", "form"];
 
   connect() {
-    this.linkTargets.forEach((link) => {
-      link.style.color = "blue";  // Set default color for links
-    });
 
     if (this.hasFormTarget) {
       this.alignForm();
@@ -14,13 +11,15 @@ export default class extends Controller {
   }
 
   alignForm() {
+
     this.formTarget.style.display = "flex";
     this.formTarget.style.flexDirection = "column";
-    this.formTarget.style.alignItems = "flex-start";
-    this.formTarget.style.maxWidth = "500px";  // Set max-width for better layout
-    this.formTarget.style.margin = "0 auto"; // Center the form
+    this.formTarget.style.alignItems = "flex-start"; // Align to the left
+    this.formTarget.style.maxWidth = "500px"; // Set max width for better layout
+    this.formTarget.style.margin = "0"; // Remove centering
+    this.formTarget.style.padding = "20px"; // Optional: Add padding for spacing
 
-    // Apply specific styling to form fields
+    // Align fields and labels left
     this.formTarget.querySelectorAll(".field").forEach((field) => {
       field.style.marginBottom = "1rem";
       field.style.display = "flex";
@@ -28,7 +27,7 @@ export default class extends Controller {
       field.style.alignItems = "flex-start";
     });
 
-    // Style the submit button
+    // Style submit button
     const submitButton = this.formTarget.querySelector(".actions input[type='submit']");
     if (submitButton) {
       submitButton.style.marginTop = "1rem";
