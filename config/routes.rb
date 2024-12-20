@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new', :as => :login
   post 'login' => "user_sessions#create"
   get 'logout' => 'user_sessions#destroy', :as => :logout
+  post 'logout' => 'user_sessions#destroy'
 
   get '/shopping', to: 'shopping#index'
   get '/categories', to: 'categories#index'
