@@ -1,23 +1,20 @@
-<div data-controller="format">
-  <div data-controller="format">
-    <div data-format-target="message">
-      <h1 class="text-4xl font-bold text-center text-blue-600">
-        WELCOME TO THE TEST ONLINE RETAIL STORE!
-      </h1>
-      <p class="text-base text-gray-600 text-center">
-        All sales are final. And all merchandise is fake.
-      </p>
-    </div>
+<div data-controller="home">
+  <!-- Message Section: This part will use the home_controller -->
+  <div data-home-target="message">
+    <h1 class="text-4xl font-bold text-center text-blue-600">
+      WELCOME TO THE TEST ONLINE RETAIL STORE!
+    </h1>
+    <p class="text-base text-gray-600 text-center">
+      All sales are final. And all merchandise is fake.
+    </p>
   </div>
-  <div data-controller="format">
-    <div>
-      <% if current_user %>
-        <%= link_to 'Shopping Page', user_shopping_path(@user.id), data: { format_target: "link" } %>
-      <% else %>
-        <%= link_to 'Shopping Page', shopping_path, data: { format_target: "link" } %>
-      <% end %>
-    </div>
+
+  <!-- Link Section: This will also use the home_controller for managing link behaviors -->
+  <div>
+    <% if current_user %>
+      <%= link_to 'Shopping Page', user_shopping_path(@user.id), data: { home_target: "link" } %>
+    <% else %>
+      <%= link_to 'Shopping Page', shopping_path, data: { home_target: "link" } %>
+    <% end %>
   </div>
 </div>
-
-
