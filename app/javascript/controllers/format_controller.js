@@ -1,15 +1,24 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["link", "message", "form"];
+  static targets = ["link", "message", "form", "input"];
 
   connect() {
     // Set default link color for all link targets
     this.linkTargets.forEach((link) => {
-      link.style.color = "blue";
+      link.style.color = "blue"; // Set the default color to blue
+
+      // Add event listeners for hover effect
+      link.addEventListener("mouseenter", () => {
+        link.style.color = "#3b82f6"; // Change color to a hover blue
+      });
+
+      link.addEventListener("mouseleave", () => {
+        link.style.color = "blue"; // Revert to the default blue color
+      });
     });
 
-    // Apply alignment if form exists
+    // Apply alignment and style the form if the form target exists
     if (this.hasFormTarget) {
       this.alignForm();
     }
@@ -29,10 +38,15 @@ export default class extends Controller {
 
   alignForm() {
     // Apply consistent alignment styling to form fields and buttons
-    this.formTarget.style.display = "flex";
-    this.formTarget.style.flexDirection = "column";
-    this.formTarget.style.alignItems = "flex-start";  // Align to the left
+    if (this.hasFormTarget) {
+      this.formTarget.style.display = "flex";
+      this.formTarget.style.flexDirection = "column";
+      this.formTarget.style.alignItems = "flex-start";  // Align to the left
+      this.formTarget.style.maxWidth = "500px";  // Set max-width for better layout
+      this.formTarget.style.margin = "0 auto"; // Center the form
+    }
 
+    // Apply specific styling to the input fields
     this.formTarget.querySelectorAll(".field").forEach((field) => {
       field.style.marginBottom = "1rem";
       field.style.display = "flex";
