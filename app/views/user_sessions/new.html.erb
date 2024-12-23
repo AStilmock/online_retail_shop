@@ -1,5 +1,6 @@
-<div data-controller="format">
-  <h1 class="text-3xl font-bold mb-6">Create an Account</h1>
-  <%= render partial: 'shared/loginform', locals: { controller: "form" } %>
-  <%= link_to 'Back', users_path, class: "text-blue-600 hover:text-blue-800", data: { target: "format.link" } %>
+<div data-controller="login">
+  <h1> Login </h1> 
+  <%= render partial: 'shared/loginform' %>
+  <%= link_to 'Back', users_path, class: "text-blue-600 hover:text-blue-800", data: { target: "login.backLink" } %>
 </div>
+
