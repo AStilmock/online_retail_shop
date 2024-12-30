@@ -1,29 +1,26 @@
-<h1 data-controller="shopping" data-shopping-target="message">
-  Here be the shopping page - view our inventory selection below!
-</h1>
-
-<div id="items">
-  <h2>Sample Item List</h2>
-  <ul>
+<div id="items" data-controller="shopping">
+  <h2 class="list-header">Sample Item List</h2>
+  <ul class="list">
     <% @items.each do |item| %>
-      <li>
+      <li class="list-item">
         <%= link_to item.name, item_path(item), data: { shopping_target: "link" } %>
       </li>
     <% end %>
   </ul>
 </div>
 
-<div id="categories">
-  <h2>Product Category List</h2>
-  <ul>
+<div id="categories" data-controller="shopping">
+  <h2 class="list-header">Product Category List</h2>
+  <ul class="list">
     <% @categories.each do |cat| %>
-      <li>
+      <li class="list-item">
         <%= link_to cat.name, category_path(cat), data: { shopping_target: "link" } %>
       </li>
     <% end %>
   </ul>
 </div>
 
-<div>
-  <%= link_to 'Home', root_path, class: "text-blue-600 hover:text-blue-800", data: { target: "login.backLink" } %>
+<!-- Home button below the lists -->
+<div class="home-button-container" data-controller="shopping">
+  <%= link_to "Home", root_path, class: "home-button", data: { target: "shopping.link" } %>
 </div>
