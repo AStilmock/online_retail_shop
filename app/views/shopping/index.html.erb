@@ -2,7 +2,7 @@
   Here be the shopping page - view our inventory selection below!
 </h1>
 
-<div id="categories">
+<div id="items">
   <h2>Sample Item List</h2>
   <ul>
     <% @items.each do |item| %>
@@ -13,16 +13,17 @@
   </ul>
 </div>
 
-<div id="items">
+<div id="categories">
   <h2>Product Category List</h2>
   <ul>
     <% @categories.each do |cat| %>
       <li>
-        <%= link_to cat.name, categories_path(cat.id), data: { shopping_target: "link" } %>
+        <%= link_to cat.name, category_path(cat), data: { shopping_target: "link" } %>
       </li>
     <% end %>
   </ul>
 </div>
+
 <div>
   <%= link_to 'Home', root_path, class: "text-blue-600 hover:text-blue-800", data: { target: "login.backLink" } %>
 </div>
