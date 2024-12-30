@@ -4,8 +4,9 @@ export default class extends Controller {
   static targets = ["link", "message"];
 
   connect() {
+    // Style links dynamically
     this.linkTargets.forEach((link) => {
-      link.style.color = "blue";  // Default color for links
+      link.style.color = "blue"; // Default color for links
     });
 
     if (this.hasMessageTarget) {
@@ -14,9 +15,10 @@ export default class extends Controller {
   }
 
   formatMessage() {
-    this.messageTaget.innerHTML = `
-      <h3 class="text-4xl font-bold text-center text-blue-600"> Here be the shopping page - 
-      view our inventory selection below! </h3>
+    // Fixing the typo in `messageTarget`
+    this.messageTarget.innerHTML = `
+      <h3 class="text-4xl font-bold text-center text-blue-600">Here be the shopping page - 
+      view our inventory selection below!</h3>
     `;
   }
 }
