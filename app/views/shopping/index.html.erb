@@ -1,19 +1,26 @@
-<h1> Here be the shopping page - view our inventory selection below! </h1>
-
-<div id='categories'>
-  <h2> 'Sample Item List' </h2>
-    <ul>
-      <% @items.each do |item| %>
-        <li><%= link_to item.name, items_path(item.id) %></li>
-      <% end %>
-    </ul>
+<div id="items" data-controller="shopping">
+  <h2 class="list-header">Sample Item List</h2>
+  <ul class="list">
+    <% @items.each do |item| %>
+      <li class="list-item">
+        <%= link_to item.name, item_path(item), data: { shopping_target: "link" } %>
+      </li>
+    <% end %>
+  </ul>
 </div>
 
-<div id='items'>
-  <h2> 'Product Category List' </h2>
-    <ul>
-      <% @categories.each do |cat| %>
-        <li><%= link_to cat.name, categories_path(cat.id) %></li>
-      <% end %>
-    </ul>
+<div id="categories" data-controller="shopping">
+  <h2 class="list-header">Product Category List</h2>
+  <ul class="list">
+    <% @categories.each do |cat| %>
+      <li class="list-item">
+        <%= link_to cat.name, category_path(cat), data: { shopping_target: "link" } %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<!-- Home button below the lists -->
+<div class="home-button-container" data-controller="shopping">
+  <%= link_to "Home", root_path, class: "home-button", data: { target: "shopping.link" } %>
 </div>

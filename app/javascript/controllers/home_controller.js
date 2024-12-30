@@ -5,7 +5,7 @@ export default class extends Controller {
 
   connect() {
     this.linkTargets.forEach((link) => {
-      link.style.color = "blue";  // Set default color for links
+      link.style.color = "blue";  // Default color for links
     });
 
     if (this.hasMessageTarget) {
