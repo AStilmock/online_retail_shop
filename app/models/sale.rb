@@ -11,6 +11,14 @@ class Sale < ApplicationRecord
     Sale.where(complete: true)
   end
 
+  def sales_by_date(date)
+    Sale.where('date_time = ?', date)
+  end
+
+  def sales_by_date_range(x,y)
+    Sale.where('date_time >= ? AND date_time <= ?', x, y)
+  end
+
   def sale_invoices(saleid)
     SaleInvoice.where(sale_id: saleid)
   end
@@ -25,9 +33,5 @@ class Sale < ApplicationRecord
 
   def sales_revenue_by_category(category)
     Sale.joins(:sales).where('sales.product_category_id = ?', category.id).sum(:total_sale_price)
-  end
-
-  def sales_by_date(date)
-    Sale.where('date_time = ?', date)
   end
 end

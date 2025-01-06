@@ -16,7 +16,7 @@ class PurchaseOrder < ApplicationRecord
     PurchaseOrder.where(item_id: itemid)
   end
 
-  def user_purchase_orders(userid)
-    PurchaseOrder.where(user_id: userid)
+  def item_cost(purch_order)
+    purch_order.items.map { |i| i.item_cost }.sum
   end
 end
