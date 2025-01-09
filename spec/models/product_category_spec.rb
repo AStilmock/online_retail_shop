@@ -23,7 +23,7 @@ RSpec.describe ProductCategory, type: :model do
       category = ProductCategory.create!(name: 'Shirts', description: 'T-shirts')
       item1 = category.items.create!(name: 'Item 1', description: 'Description 1', unit_price: 1.0, item_cost: 0.5, quantity: 10, in_stock: true, vendor_id: vendor.id)
       item2 = category.items.create!(name: 'Item 2', description: 'Description 2', unit_price: 1.0, item_cost: 0.5, quantity: 10, in_stock: true, vendor_id: vendor.id)
-      expect(category.category_items(category.id)).to eq([item1, item2])
+      expect(ProductCategory.category_items(category.id)).to eq([item1, item2])
     end
   end
 end

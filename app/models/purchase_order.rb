@@ -8,11 +8,11 @@ class PurchaseOrder < ApplicationRecord
   belongs_to :vendor
   belongs_to :user
 
-  def vendor_purchase_orders(vendid)
+  def self.vendor_purchase_orders(vendid)
     PurchaseOrder.where(vendor_id: vendid)
   end
 
-  def item_purchase_orders(itemid)
+  def self.item_purchase_orders(itemid)
     PurchaseOrder.where(item_id: itemid)
   end
 
