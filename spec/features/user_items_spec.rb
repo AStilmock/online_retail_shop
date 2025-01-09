@@ -13,7 +13,7 @@ RSpec.describe 'User Items Page', type: :feature do
       @vendor = Vendor.create!(
         name: 'Bill & Teds excellent merchandise', 
         description: 'Merchandise for Bill & Ted fans', 
-        address: '1234 Wyld Stallyns Way, San Dima, CA 91773', 
+        address: '1234 Wyld Stallyns Way, San Dimas, CA 91773', 
         email: 'beexcellent@gmail.com', 
         phone: '555-555-5555'
         )
