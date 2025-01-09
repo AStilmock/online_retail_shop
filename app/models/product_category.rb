@@ -7,6 +7,4 @@ class ProductCategory < ApplicationRecord
   def category_items(catid)
     Item.where(product_category_id: catid)
   end
-
-  
 end
