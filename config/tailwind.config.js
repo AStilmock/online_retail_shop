@@ -1,6 +1,14 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: "#1E40AF", // Custom blue
+        secondary: "#64748B", // Custom gray
+      },
+    },
+  },
   content: [
     './public/*.html',
     './app/helpers/**/*.rb',
