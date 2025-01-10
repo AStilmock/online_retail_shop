@@ -7,20 +7,16 @@ class Sale < ApplicationRecord
   has_many :users, through: :sale_invoices
   has_many :discounts, through: :sale_invoices
 
-  def all_sales
+  def self.all_sales
     Sale.where(complete: true)
   end
 
-  def sales_by_date(date)
-    Sale.where('date_time = ?', date)
+  def self.sales_by_date(date)
+    Sale.where(created_at: date.beginning_of_day..date.end_of_day)
   end
 
   def sales_by_date_range(x,y)
     Sale.where('date_time >= ? AND date_time <= ?', x, y)
-  end
-
-  def sale_invoices(saleid)
-    SaleInvoice.where(sale_id: saleid)
   end
 
   def sales_by_category(category)
