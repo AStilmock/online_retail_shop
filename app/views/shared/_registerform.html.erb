@@ -1,18 +1,18 @@
 <div data-controller="register">
-  <%= form_with url: users_path, method: :post, data: { register_target: "form" }, class: "w-full max-w-md" do |f| %>
-    <div class="field flex flex-col items-start">
+  <%= form_with url: users_path, method: :post, data: { controller: "register", register_target: "form" }, class: "w-full form-container" do |f| %>
+    <div class="field" data-register-target="input">
       <%= f.label :email, class: "font-bold" %>
-      <%= f.text_field :email, class: "border rounded p-2 w-full" %>
+      <%= f.text_field :email, class: "border rounded p-2 w-full", data: { register_target: "input" } %>
     </div>
 
-    <div class="field flex flex-col items-start">
+    <div class="field" data-register-target="input">
       <%= f.label :password, class: "font-bold" %>
-      <%= f.password_field :password, class: "border rounded p-2 w-full" %>
+      <%= f.password_field :password, class: "border rounded p-2 w-full", data: { register_target: "input" } %>
     </div>
 
-    <div class="field flex flex-col items-start">
+    <div class="field" data-register-target="input">
       <%= f.label :password_confirmation, class: "font-bold" %>
-      <%= f.password_field :password_confirmation, class: "border rounded p-2 w-full" %>
+      <%= f.password_field :password_confirmation, class: "border rounded p-2 w-full", data: { register_target: "input" } %>
     </div>
 
     <div>
@@ -22,7 +22,8 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Create Account", class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+      <%= f.submit "Create Account", class: "submit-button" %>
     </div>
   <% end %>
+  <%= link_to "Back", root_path, class: "back-link", data: { register_target: "link" } %>
 </div>
