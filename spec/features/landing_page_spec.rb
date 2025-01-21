@@ -16,6 +16,7 @@ RSpec.describe 'Application Landing Page' do
       expect(page).to have_content('And all merchandise is fake.')
       expect(page).to have_link('Login')
       expect(page).to have_link('Register')
+      expect(page).to have_link('Shopping Page')
     end
   end
 end
