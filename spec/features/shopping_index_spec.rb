@@ -52,6 +52,7 @@ RSpec.describe 'Shopping Index Page', type: :feature do
       expect(page).to have_link(@item7.name)
       expect(page).to have_link(@item8.name)
       expect(page).to have_link(@item9.name)
+      expect(page).to have_link('Home')
     end
 
     it 'shirts link goes to shirt category show page' do
