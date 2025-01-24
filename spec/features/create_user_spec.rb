@@ -11,6 +11,7 @@ RSpec.describe 'User Registration Process', type: :feature do
       expect(page).to have_field('Password')
       expect(page).to have_field('Password confirmation')
       expect(page).to have_button('Create Account')
+      expect(page).to have_link('Home')
     end
 
     it 'user#create' do
