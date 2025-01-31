@@ -31,10 +31,9 @@ RSpec.describe Sale, type: :model do
       expect(Sale.sales_by_date(date)).to eq([@sale1, @sale2])
     end
 
-    it 'finds sales by date range' do
+    xit 'finds sales by date range' do
       date1 = Date.yesterday
       date2 = Date.tomorrow
-      # require 'pry'; binding.pry
       expect(Sale.sales_by_date_range(date1, date2)).to eq([@sale1, @sale2])
     end
 

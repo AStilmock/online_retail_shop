@@ -8,22 +8,19 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-
-    <!-- Navigation Links within the format controller -->
-    <div id="nav" data-controller="format">
-      <% if current_user %>
-        <%= link_to "Edit Profile", edit_user_path(current_user.id), data: { format_target: "link" } %>
-        <%= link_to "Logout", :logout, method: :post, data: { format_target: "link" } %>
-      <% else %>
-        <%= link_to "Register", new_user_path, data: { format_target: "link" } %> |
-        <%= link_to "Login", :login, data: { format_target: "link" } %>
-      <% end %>
-    </div>
   </head>
-
+    <!-- Navigation Links within the format controller -->
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+    <nav class="navbar">
+      <%= link_to 'Login',login_path, class: 'nav-link' unless logged_in? %>
+      <%= link_to 'Home', root_path, class: 'nav-link' unless logged_in? %>
+      <%= link_to 'Logout', logout_path, method: :delete, class: 'nav-link' if logged_in? %>
+    </nav>
+
+    <% flash.each do |key, message| %>
+      <div class="flash <%= key %>"><%= message %></div>
+    <% end %>
+
+    <%= yield %>
   </body>
 </html>
