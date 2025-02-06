@@ -8,9 +8,11 @@ RSpec.describe 'Login Path', type: :feature do
     end
 
     it 'user_sessions#new' do
-      expect(page).to have_content('Login')
-      expect(page).to have_link('Register')
-      expect(page).to have_link('Login')
+    expect(page).to have_content('Login')
+    expect(page).to have_link('Register')
+    expect(page).to have_field('Email')
+    expect(page).to have_field('Password')
+    expect(page).to have_button('Login')
     end
 
     it 'user_sessions#create' do  

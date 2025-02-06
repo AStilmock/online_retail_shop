@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Key by the Bridge</title>
+</head>
+  <h>The Key by the Bridge</h>
+
+  <p>
+    One sunny afternoon, Mia decided to explore the woods behind her grandmother's house. 
+    <ul>
+      <li>She had always been curious about the old stone bridge</li>
+      <li>she could see from the kitchen window.</li> 
+      <li>As  she approached it, she noticed a small, sparkling object lying in the grass.</li>
+    </ul>  
+  </p>
+  <p>
+    Picking it up, she discovered it was an intricately carved silver key. Intrigued, she looked around and spotted a rusty, locked chest half-buried near the bridge. 
+    Her heart raced as she inserted the key into the lock. With a satisfying click, the lid creaked open, revealing a treasure trove of letters and trinkets that seemed to tell a forgotten tale.
+    The End
+  </p>
+</head>
+
+------------------------
+<!DOCTYPE html>
+<html lang= "en">
+
+<head>
+  <h> A Short Intro About Japan </h>
+</head>
+
+<body>
+  <p>
+    The term “Japan” originates from the term Nippon, which translates literally to “the origin of the sun” in Spanish. 
+    Therefore, the official and original designation of the Japanese nation is Nippon-koku, meaning “the country of the origin of the sun.”
+  </p>
+  
+  <p>
+    Initially a feudal nation, where the highest representation of power was the emperor, who held a spiritual function.
+    Following the emperor were the shoguns, traditionally Buddhists who could be understood as the kings in the different regions that comprised Japan.
+    Military leaders were called Daimyo, samurais were warriors, ronin were soldiers, and then came the peasants.
+  </p>
+
+  <ul>
+    <li> This is a list about Japan </li>
+    <li> Japan is a country in Asia </li>
+    <li> Japan is an island country </li>
+    <li> This is the end of the list about Japan </li>
+  </ul>
+</body>
+</html>

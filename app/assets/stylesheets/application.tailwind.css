@@ -11,3 +11,32 @@
 }
 
 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .form-container {
+    @apply max-w-md m-0 mt-5;
+  }
+
+  .field {
+    @apply mb-4 flex flex-col items-start;
+  }
+
+  .submit-button {
+    @apply mt-4 px-4 py-2 bg-blue-500 text-white border-none rounded cursor-pointer;
+  }
+
+  .back-link {
+    @apply text-blue-600 no-underline;
+  }
+
+  .back-link:hover {
+    @apply text-blue-800;
+  }
+
+  .home-link {
+    @apply text-blue-600 hover:text-blue-800 bg-white border border-blue-600 rounded-lg px-6 py-3;
+  }
+}

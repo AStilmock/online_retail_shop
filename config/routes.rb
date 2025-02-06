@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
   
   get '/' => 'users#index'
-  get 'online-retail-shop.vercel.app/' => 'users#index'
+  # get 'online-retail-shop.vercel.app/' => 'users#index'
   get 'login' => 'user_sessions#new', :as => :login
   post 'login' => "user_sessions#create"
   get 'logout' => 'user_sessions#destroy', :as => :logout

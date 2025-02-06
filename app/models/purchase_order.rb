@@ -7,4 +7,16 @@ class PurchaseOrder < ApplicationRecord
   
   belongs_to :vendor
   belongs_to :user
+
+  def self.vendor_purchase_orders(vendid)
+    PurchaseOrder.where(vendor_id: vendid)
+  end
+
+  def self.item_purchase_orders(itemid)
+    PurchaseOrder.where(item_id: itemid)
+  end
+
+  def item_cost(purch_order)
+    purch_order.items.map { |i| i.item_cost }.sum
+  end
 end

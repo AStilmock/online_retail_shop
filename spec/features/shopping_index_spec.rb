@@ -52,46 +52,47 @@ RSpec.describe 'Shopping Index Page', type: :feature do
       expect(page).to have_link(@item7.name)
       expect(page).to have_link(@item8.name)
       expect(page).to have_link(@item9.name)
+      expect(page).to have_link('Home')
     end
 
     it 'shirts link goes to shirt category show page' do
       click_link(@category1.name)
-      expect(current_path).to eq(categories_path(@category1.id))
+      expect(current_path).to eq(category_path(@category1.id))
     end
 
     it 'hoodies link goes to hoodie category show page' do 
       click_link(@category2.name)
-      expect(current_path).to eq(categories_path(@category2.id))
+      expect(current_path).to eq(category_path(@category2.id))
     end
 
     it 'hats link goes to hat category show page' do 
       click_link(@category3.name)
-      expect(current_path).to eq(categories_path(@category3.id))
+      expect(current_path).to eq(category_path(@category3.id))
     end
 
     it 'stickers link goes to sticker category show page' do 
       click_link(@category4.name)
-      expect(current_path).to eq(categories_path(@category4.id))
+      expect(current_path).to eq(category_path(@category4.id))
     end
 
     it 'shirt link goes to shirt item show page' do
       click_link(@item1.name)
-      expect(current_path).to eq(items_path(@item1.id))
+      expect(current_path).to eq(item_path(@item1.id))
     end
     
     it 'hoodie link goes to hoodie item show page' do
       click_link(@item3.name)
-      expect(current_path).to eq(items_path(@item3.id))
+      expect(current_path).to eq(item_path(@item3.id))
     end
     
     it 'hat link goes to hat item show page' do
       click_link(@item5.name)
-      expect(current_path).to eq(items_path(@item5.id))
+      expect(current_path).to eq(item_path(@item5.id))
     end
     
     it 'sticker link goes to sticker item show page' do
       click_link(@item7.name)
-      expect(current_path).to eq(items_path(@item7.id))
+      expect(current_path).to eq(item_path(@item7.id))
     end
   end
 end

@@ -9,4 +9,12 @@ class Item < ApplicationRecord
 
   belongs_to :product_category
   belongs_to :vendor
+
+  def self.items_by_vendor(venid)
+    Item.where(vendor_id: venid)
+  end
+
+  def self.items_by_category(catid)
+    Item.where(product_category_id: catid)
+  end
 end

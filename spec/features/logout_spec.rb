@@ -12,11 +12,11 @@ RSpec.describe 'Logout Path', type: :feature do
     it 'user_session#destroy' do
       click_button 'Login'
       expect(current_path).to eq(root_path)
-      # expect(page).to have_content('Login successful')
+      expect(page).to have_content('Login successful')
       expect(page).to have_link('Logout')
       click_link 'Logout'
       expect(current_path).to eq(root_path)
-      # expect(page).to have_content('Logged out!')
+      expect(page).to have_content('Logged out!')
       expect(page).to have_link('Login')
     end
   end
