@@ -1,0 +1,41 @@
+<!-- Show Page -->
+<h1 class="text-2xl font-bold">Vendor Show Page</h1>
+
+<div class="vendor-details">
+  <h2><%= @vendor.name %></h2>
+  
+  <div class="detail-section">
+    <p><strong>Description:</strong> <%= @vendor.description %></p>
+    <p><strong>Address:</strong> <%= @vendor.address %></p>
+    <p><strong>Email:</strong> <%= @vendor.email %></p>
+    <p><strong>Phone:</strong> <%= @vendor.phone %></p>
+    <p><strong>Created At:</strong> <%= @vendor.created_at.strftime("%B %d, %Y") %></p>
+  </div>
+
+  <div class="vendor-items-section">
+    <h3>Items from this Vendor</h3>
+    <ul>
+      <% @items.each do |item| %>
+        <li><%= link_to item.name, item_path(item) %> - $<%= sprintf("%.2f", item.unit_price / 100.0) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="vendor-purchase-orders-section">
+    <h3>Purchase Orders</h3>
+    <ul>
+      <% @purchase_orders.each do |purchase_order| %>
+        <li>
+          <%= link_to "Purchase Order ##{purchase_order.id}", purchase_order_path(purchase_order) %> - 
+          <%= purchase_order.item.name %> - 
+          Status: <%= purchase_order.complete? ? "Complete" : "Pending" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="navigation-links">
+  <%= link_to "Back to Vendors", vendors_path, class: "back-link" %>
+  <%= link_to "Home", root_path, class: "back-link" %>
+</div>

@@ -1,0 +1,18 @@
+<!-- Show Page -->
+<h1 class="text-2xl font-bold">Purchase Order Item Show Page</h1>
+
+<div class="purchase-order-item-details">
+  <h2>Purchase Order Item #<%= @purchase_order_item.id %></h2>
+  
+  <div class="detail-section">
+    <p><strong>Item:</strong> <%= link_to @purchase_order_item.item.name, item_path(@purchase_order_item.item) %></p>
+    <p><strong>Quantity:</strong> <%= @purchase_order_item.quantity %></p>
+    <p><strong>Purchase Order:</strong> <%= link_to "Purchase Order ##{@purchase_order_item.purchase_order.id}", purchase_order_path(@purchase_order_item.purchase_order) %></p>
+    <p><strong>Created At:</strong> <%= @purchase_order_item.created_at.strftime("%B %d, %Y") %></p>
+  </div>
+</div>
+
+<div class="navigation-links">
+  <%= link_to "Back to Purchase Order Items", purchase_order_items_path, class: "back-link" %>
+  <%= link_to "Home", root_path, class: "back-link" %>
+</div>

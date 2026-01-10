@@ -1,0 +1,34 @@
+<!-- Show Page -->
+<h1 class="text-2xl font-bold">Sale Show Page</h1>
+
+<div class="sale-details">
+  <h2>Sale #<%= @sale.id %></h2>
+  
+  <div class="detail-section">
+    <p><strong>Date/Time:</strong> <%= @sale.date_time&.strftime("%B %d, %Y at %I:%M %p") %></p>
+    <p><strong>Sub Total Sale Price:</strong> $<%= sprintf("%.2f", @sale.sub_total_sale_price / 100.0) %></p>
+    <p><strong>Shipping:</strong> $<%= sprintf("%.2f", @sale.shipping / 100.0) %></p>
+    <p><strong>Taxes:</strong> $<%= sprintf("%.2f", @sale.taxes / 100.0) %></p>
+    <p><strong>Total Sale Price:</strong> $<%= sprintf("%.2f", @sale.total_sale_price / 100.0) %></p>
+    <p><strong>Status:</strong> <%= @sale.complete? ? "Complete" : "Pending" %></p>
+    <p><strong>Created At:</strong> <%= @sale.created_at.strftime("%B %d, %Y") %></p>
+  </div>
+
+  <div class="sale-invoices-section">
+    <h3>Sale Invoices</h3>
+    <ul>
+      <% @sale_invoices.each do |sale_invoice| %>
+        <li>
+          <%= link_to "Sale Invoice ##{sale_invoice.id}", sale_invoice_path(sale_invoice) %> - 
+          User: <%= sale_invoice.user.email %> - 
+          Invoice: <%= link_to "Invoice ##{sale_invoice.invoice.id}", invoice_path(sale_invoice.invoice) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="navigation-links">
+  <%= link_to "Back to Sales", sales_path, class: "back-link" %>
+  <%= link_to "Home", root_path, class: "back-link" %>
+</div>

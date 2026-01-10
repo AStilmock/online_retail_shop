@@ -1,6 +1,23 @@
-<h1>Find the details for <%= @item.name %> here!</h1>
+<!-- Show Page -->
+<h1 class="text-2xl font-bold">Item Show Page</h1>
 
-<div>
-  <%= @item.description %>
-  <%= link_to "Home", root_path, class: "back-link", data: { register_target: "link" } %>
+<div class="item-details">
+  <h2><%= @item.name %></h2>
+  
+  <div class="detail-section">
+    <p><strong>Description:</strong> <%= @item.description %></p>
+    <p><strong>Unit Price:</strong> $<%= sprintf("%.2f", @item.unit_price / 100.0) %></p>
+    <p><strong>Item Cost:</strong> $<%= sprintf("%.2f", @item.item_cost / 100.0) %></p>
+    <p><strong>Quantity:</strong> <%= @item.quantity %></p>
+    <p><strong>In Stock:</strong> <%= @item.in_stock? ? "Yes" : "No" %></p>
+    <p><strong>Product Category:</strong> <%= link_to @item.product_category.name, category_path(@item.product_category) %></p>
+    <p><strong>Vendor:</strong> <%= link_to @item.vendor.name, vendor_path(@item.vendor) %></p>
+    <p><strong>Created At:</strong> <%= @item.created_at.strftime("%B %d, %Y") %></p>
+  </div>
+</div>
+
+<div class="navigation-links">
+  <%= link_to "Back to Items", items_path, class: "back-link" %>
+  <%= link_to "Shopping", shopping_path, class: "back-link" %>
+  <%= link_to "Home", root_path, class: "back-link" %>
 </div>

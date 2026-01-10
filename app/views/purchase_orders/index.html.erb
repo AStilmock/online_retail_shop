@@ -1,0 +1,25 @@
+<!-- Index Page -->
+<h1 class="text-2xl font-bold">Purchase Orders Index Page</h1>
+
+<div id="purchase_orders" data-controller="shopping">
+  <h2 class="list-header">All Purchase Orders</h2>
+  <ul class="list">
+    <% @purchase_orders.each do |purchase_order| %>
+      <li class="list-item">
+        <%= link_to "Purchase Order ##{purchase_order.id}", purchase_order_path(purchase_order), data: { shopping_target: "link" } %>
+        <p class="purchase-order-info">
+          <span>Date: <%= purchase_order.date_time&.strftime("%B %d, %Y") %></span>
+          <span>Vendor: <%= purchase_order.vendor.name %></span>
+          <span>Item: <%= purchase_order.item.name %></span>
+          <span>Quantity: <%= purchase_order.quantity %></span>
+          <span>Status: <%= purchase_order.complete? ? "Complete" : "Pending" %></span>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<!-- Home button below the list -->
+<div class="home-button-container" data-controller="shopping">
+  <%= link_to "Home", root_path, class: "home-button", data: { target: "shopping.link" } %>
+</div>

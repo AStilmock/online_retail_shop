@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   skip_before_action :require_login, only: [:index, :show]
 
   def index
+    @categories = ProductCategory.all
   end
 
   def show

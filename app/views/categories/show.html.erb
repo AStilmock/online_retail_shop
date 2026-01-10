@@ -1,8 +1,30 @@
-<h1>Find yer loot for all <%= @category.name %> here!</h1>
+<!-- Show Page -->
+<h1 class="text-2xl font-bold">Category Show Page</h1>
 
-<div>
-  <% @items.each do |item| %>
-    <%= link_to item.name, items_path(item.id) %>
-  <% end %>
-  <%= link_to "Home", root_path, class: "back-link", data: { register_target: "link" } %>
+<div class="category-details">
+  <h2><%= @category.name %></h2>
+  
+  <div class="detail-section">
+    <p><strong>Description:</strong> <%= @category.description %></p>
+    <p><strong>Created At:</strong> <%= @category.created_at.strftime("%B %d, %Y") %></p>
+  </div>
+
+  <div class="category-items-section">
+    <h3>Items in this Category</h3>
+    <ul class="list">
+      <% @items.each do |item| %>
+        <li class="list-item">
+          <%= link_to item.name, item_path(item) %> - 
+          $<%= sprintf("%.2f", item.unit_price / 100.0) %> - 
+          <%= item.in_stock? ? "In Stock" : "Out of Stock" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="navigation-links">
+  <%= link_to "Back to Categories", categories_path, class: "back-link" %>
+  <%= link_to "Shopping", shopping_path, class: "back-link" %>
+  <%= link_to "Home", root_path, class: "back-link" %>
 </div>

@@ -4,6 +4,15 @@ Rails.application.routes.draw do
   resources :users
   resources :categories, only: [:index, :show]
   resources :items, only: [:index, :show]
+  resources :discounts, only: [:index, :show]
+  resources :employees, only: [:index, :show]
+  resources :invoices, only: [:index, :show]
+  resources :invoice_items, only: [:index, :show]
+  resources :purchase_orders, only: [:index, :show]
+  resources :purchase_order_items, only: [:index, :show]
+  resources :sales, only: [:index, :show]
+  resources :sale_invoices, only: [:index, :show]
+  resources :vendors, only: [:index, :show]
   
   get '/' => 'users#index'
   # get 'online-retail-shop.vercel.app/' => 'users#index'

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :invoice_items
   has_many :items, through: :invoice_items
   has_many :purchase_orders
+  has_one :employee
   
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

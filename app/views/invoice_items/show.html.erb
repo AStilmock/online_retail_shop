@@ -1,0 +1,20 @@
+<!-- Show Page -->
+<h1 class="text-2xl font-bold">Invoice Item Show Page</h1>
+
+<div class="invoice-item-details">
+  <h2>Invoice Item #<%= @invoice_item.id %></h2>
+  
+  <div class="detail-section">
+    <p><strong>Item:</strong> <%= link_to @invoice_item.item.name, item_path(@invoice_item.item) %></p>
+    <p><strong>Quantity:</strong> <%= @invoice_item.quantity %></p>
+    <p><strong>Invoice:</strong> <%= link_to "Invoice ##{@invoice_item.invoice.id}", invoice_path(@invoice_item.invoice) %></p>
+    <p><strong>User:</strong> <%= link_to @invoice_item.user.email, user_path(@invoice_item.user) %></p>
+    <p><strong>Discount:</strong> <%= link_to @invoice_item.discount.name, discount_path(@invoice_item.discount) %></p>
+    <p><strong>Created At:</strong> <%= @invoice_item.created_at.strftime("%B %d, %Y") %></p>
+  </div>
+</div>
+
+<div class="navigation-links">
+  <%= link_to "Back to Invoice Items", invoice_items_path, class: "back-link" %>
+  <%= link_to "Home", root_path, class: "back-link" %>
+</div>
