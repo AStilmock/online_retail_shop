@@ -1,0 +1,23 @@
+<!-- Index Page -->
+<h1 class="text-2xl font-bold">Invoice Items Index Page</h1>
+
+<div id="invoice_items" data-controller="shopping">
+  <h2 class="list-header">All Invoice Items</h2>
+  <ul class="list">
+    <% @invoice_items.each do |invoice_item| %>
+      <li class="list-item">
+        <%= link_to "Invoice Item ##{invoice_item.id}", invoice_item_path(invoice_item), data: { shopping_target: "link" } %>
+        <p class="invoice-item-info">
+          <span>Item: <%= invoice_item.item.name %></span>
+          <span>Quantity: <%= invoice_item.quantity %></span>
+          <span>Invoice: #<%= invoice_item.invoice.id %></span>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<!-- Home button below the list -->
+<div class="home-button-container" data-controller="shopping">
+  <%= link_to "Home", root_path, class: "home-button", data: { target: "shopping.link" } %>
+</div>

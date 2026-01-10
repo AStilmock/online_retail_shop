@@ -1,0 +1,20 @@
+<!-- Index Page -->
+<h1 class="text-2xl font-bold">Product Categories Index Page</h1>
+
+<div id="categories" data-controller="shopping">
+  <h2 class="list-header">All Product Categories</h2>
+  <ul class="list">
+    <% @categories.each do |category| %>
+      <li class="list-item">
+        <%= link_to category.name, category_path(category), data: { shopping_target: "link" } %>
+        <p class="category-description"><%= category.description %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<!-- Home button below the list -->
+<div class="home-button-container" data-controller="shopping">
+  <%= link_to "Home", root_path, class: "home-button", data: { target: "shopping.link" } %>
+  <%= link_to "Shopping", shopping_path, class: "home-button", data: { target: "shopping.link" } %>
+</div>

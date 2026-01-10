@@ -1,0 +1,23 @@
+<!-- Index Page -->
+<h1 class="text-2xl font-bold">Vendors Index Page</h1>
+
+<div id="vendors" data-controller="shopping">
+  <h2 class="list-header">All Vendors</h2>
+  <ul class="list">
+    <% @vendors.each do |vendor| %>
+      <li class="list-item">
+        <%= link_to vendor.name, vendor_path(vendor), data: { shopping_target: "link" } %>
+        <p class="vendor-info">
+          <span>Email: <%= vendor.email %></span>
+          <span>Phone: <%= vendor.phone %></span>
+          <span>Items: <%= vendor.items.count %></span>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<!-- Home button below the list -->
+<div class="home-button-container" data-controller="shopping">
+  <%= link_to "Home", root_path, class: "home-button", data: { target: "shopping.link" } %>
+</div>

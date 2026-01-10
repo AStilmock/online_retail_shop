@@ -1,0 +1,34 @@
+<!-- Show Page -->
+<h1 class="text-2xl font-bold">Purchase Order Show Page</h1>
+
+<div class="purchase-order-details">
+  <h2>Purchase Order #<%= @purchase_order.id %></h2>
+  
+  <div class="detail-section">
+    <p><strong>Date/Time:</strong> <%= @purchase_order.date_time&.strftime("%B %d, %Y at %I:%M %p") %></p>
+    <p><strong>Description:</strong> <%= @purchase_order.description %></p>
+    <p><strong>Quantity:</strong> <%= @purchase_order.quantity %></p>
+    <p><strong>Status:</strong> <%= @purchase_order.complete? ? "Complete" : "Pending" %></p>
+    <p><strong>Vendor:</strong> <%= link_to @purchase_order.vendor.name, vendor_path(@purchase_order.vendor) %></p>
+    <p><strong>Item:</strong> <%= link_to @purchase_order.item.name, item_path(@purchase_order.item) %></p>
+    <p><strong>User:</strong> <%= link_to @purchase_order.user.email, user_path(@purchase_order.user) %></p>
+    <p><strong>Created At:</strong> <%= @purchase_order.created_at.strftime("%B %d, %Y") %></p>
+  </div>
+
+  <div class="purchase-order-items-section">
+    <h3>Purchase Order Items</h3>
+    <ul>
+      <% @purchase_order_items.each do |purchase_order_item| %>
+        <li>
+          <%= link_to purchase_order_item.item.name, item_path(purchase_order_item.item) %> - 
+          Quantity: <%= purchase_order_item.quantity %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="navigation-links">
+  <%= link_to "Back to Purchase Orders", purchase_orders_path, class: "back-link" %>
+  <%= link_to "Home", root_path, class: "back-link" %>
+</div>

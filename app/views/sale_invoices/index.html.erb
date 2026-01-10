@@ -1,0 +1,24 @@
+<!-- Index Page -->
+<h1 class="text-2xl font-bold">Sale Invoices Index Page</h1>
+
+<div id="sale_invoices" data-controller="shopping">
+  <h2 class="list-header">All Sale Invoices</h2>
+  <ul class="list">
+    <% @sale_invoices.each do |sale_invoice| %>
+      <li class="list-item">
+        <%= link_to "Sale Invoice ##{sale_invoice.id}", sale_invoice_path(sale_invoice), data: { shopping_target: "link" } %>
+        <p class="sale-invoice-info">
+          <span>Date: <%= sale_invoice.date_time&.strftime("%B %d, %Y") %></span>
+          <span>Sale: #<%= sale_invoice.sale.id %></span>
+          <span>Invoice: #<%= sale_invoice.invoice.id %></span>
+          <span>User: <%= sale_invoice.user.email %></span>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<!-- Home button below the list -->
+<div class="home-button-container" data-controller="shopping">
+  <%= link_to "Home", root_path, class: "home-button", data: { target: "shopping.link" } %>
+</div>
