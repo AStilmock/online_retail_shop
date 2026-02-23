@@ -1,27 +1,39 @@
 <!-- Index Page -->
-<h1 class="text-2xl font-bold">Items Index Page</h1>
+<div class="mb-8">
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">Items Index Page</h1>
+  <p class="text-gray-600">Browse all available items</p>
+</div>
 
 <div id="items" data-controller="shopping">
-  <h2 class="list-header">All Items</h2>
-  <ul class="list">
+  <h2 class="text-2xl font-semibold text-gray-800 mb-4">All Items</h2>
+  <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     <% @items.each do |item| %>
-      <li class="list-item">
-        <%= link_to item.name, item_path(item), data: { shopping_target: "link" } %>
-        <p class="item-info">
-          <span class="item-price">Price: $<%= sprintf("%.2f", item.unit_price / 100.0) %></span>
+      <li class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+        <%= link_to item.name, item_path(item), 
+            class: "text-blue-700 hover:text-blue-900 font-semibold text-xl mb-3 block", 
+            data: { shopping_target: "link" } %>
+        <div class="space-y-2">
+          <p class="text-gray-700">
+            <span class="font-medium">Price:</span> 
+            <span class="text-lg font-semibold text-gray-900">$<%= sprintf("%.2f", item.unit_price / 100.0) %></span>
+          </p>
           <% if item.in_stock %>
-            <span class="in-stock">In Stock</span>
+            <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">In Stock</span>
           <% else %>
-            <span class="out-of-stock">Out of Stock</span>
+            <span class="inline-block bg-red-100 text-red-800 text-sm font-medium px-3 py-1 rounded-full">Out of Stock</span>
           <% end %>
-        </p>
+        </div>
       </li>
     <% end %>
   </ul>
 </div>
 
 <!-- Home button below the list -->
-<div class="home-button-container" data-controller="shopping">
-  <%= link_to "Home", root_path, class: "home-button", data: { target: "shopping.link" } %>
-  <%= link_to "Shopping", shopping_path, class: "home-button", data: { target: "shopping.link" } %>
+<div class="mt-8 flex justify-center space-x-4" data-controller="shopping">
+  <%= link_to "Home", root_path, 
+      class: "bg-blue-700 hover:bg-blue-800 text-white font-medium px-6 py-3 rounded-lg transition-colors", 
+      data: { target: "shopping.link" } %>
+  <%= link_to "Shopping", shopping_path, 
+      class: "bg-gray-600 hover:bg-gray-700 text-white font-medium px-6 py-3 rounded-lg transition-colors", 
+      data: { target: "shopping.link" } %>
 </div>
