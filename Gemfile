@@ -77,3 +77,5 @@ end
 
 
 gem "tailwindcss-rails", "~> 3.0"
+
+gem "ruby_llm", "~> 1.12"
