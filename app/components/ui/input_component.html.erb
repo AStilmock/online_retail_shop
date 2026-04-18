@@ -1,0 +1,26 @@
+<div class="field w-full max-w-lg" <%= tag.attributes(data: field_data) if field_data.present? %>>
+  <% if label.present? %>
+    <label for="<%= input_id %>" class="text-sm font-medium text-secondary-800">
+      <%= label %>
+      <% if required %><span class="text-danger-600">*</span><% end %>
+    </label>
+  <% end %>
+  <input
+    type="<%= type %>"
+    name="<%= name %>"
+    id="<%= input_id %>"
+    value="<%= value %>"
+    placeholder="<%= placeholder %>"
+    class="<%= input_classes %>"
+    <%= "required" if required %>
+    <%= "disabled" if disabled %>
+    aria-invalid="<%= error? %>"
+    <%= tag.attributes(html_options.except(:class)) %>
+  />
+  <% if hint.present? && !error? %>
+    <p class="text-xs text-secondary-500"><%= hint %></p>
+  <% end %>
+  <% if error? %>
+    <p class="text-sm text-danger-600" role="alert"><%= error %></p>
+  <% end %>
+</div>

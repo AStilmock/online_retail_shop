@@ -1,0 +1,13 @@
+<nav aria-label="Breadcrumb" class="<%= nav_classes %>" <%= tag.attributes(html_options.except(:class)) %>>
+  <% items.each_with_index do |item, i| %>
+    <% last = i == items.length - 1 %>
+    <% if item[:url].present? && !last %>
+      <%= link_to item[:label], item[:url], class: "text-primary-700 hover:text-primary-900 hover:underline" %>
+      <span class="text-secondary-400" aria-hidden="true">/</span>
+    <% else %>
+      <span class="<%= last ? 'font-medium text-secondary-900' : 'text-secondary-600' %>">
+        <%= item[:label] %>
+      </span>
+    <% end %>
+  <% end %>
+</nav>

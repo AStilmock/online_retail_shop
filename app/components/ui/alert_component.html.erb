@@ -1,0 +1,22 @@
+<div
+  class="<%= alert_classes %>"
+  role="alert"
+  <%= tag.attributes(html_options.except(:class)) %>
+  <% if dismissible %>
+    data-controller="toast"
+  <% end %>
+>
+  <div class="flex items-start justify-between gap-3">
+    <div class="flex-1"><%= message %></div>
+    <% if dismissible %>
+      <button
+        type="button"
+        class="rounded p-1 text-current hover:bg-black/5 focus:outline-none focus-visible:ring-2"
+        data-action="click->toast#dismiss"
+        aria-label="Dismiss"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    <% end %>
+  </div>
+</div>

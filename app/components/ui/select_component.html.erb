@@ -1,0 +1,23 @@
+<div class="field w-full max-w-lg">
+  <% if label.present? %>
+    <label for="<%= select_id %>" class="text-sm font-medium text-secondary-800">
+      <%= label %>
+      <% if required %><span class="text-danger-600">*</span><% end %>
+    </label>
+  <% end %>
+  <%= select_tag name,
+        options_for_select(options, selected),
+        id: select_id,
+        include_blank: include_blank,
+        class: cn("block w-full rounded-md border border-secondary-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30", select_classes),
+        required: required,
+        disabled: disabled,
+        aria: { invalid: error? },
+        **html_options.except(:class) %>
+  <% if hint.present? && !error? %>
+    <p class="text-xs text-secondary-500"><%= hint %></p>
+  <% end %>
+  <% if error? %>
+    <p class="text-sm text-danger-600" role="alert"><%= error %></p>
+  <% end %>
+</div>

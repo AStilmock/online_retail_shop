@@ -1,0 +1,16 @@
+<div class="<%= wrapper_classes %>" <%= tag.attributes(html_options.except(:class)) %>>
+  <table class="min-w-full divide-y divide-secondary-200">
+    <thead class="bg-secondary-50">
+      <tr>
+        <% headers.each do |h| %>
+          <th scope="col" class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-secondary-600">
+            <%= h %>
+          </th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody class="<%= row_classes %>">
+      <%= content %>
+    </tbody>
+  </table>
+</div>

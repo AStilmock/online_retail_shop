@@ -2,18 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+@layer base {
+  /* Minimal form reset so inputs look consistent without @tailwindcss/forms */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  select,
+  textarea {
+    @apply block w-full rounded-md border border-secondary-300 bg-white px-3 py-2 text-sm text-secondary-900 shadow-sm;
+    @apply placeholder:text-secondary-400;
+    @apply focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30;
+  }
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  input[type="checkbox"],
+  input[type="radio"] {
+    @apply h-4 w-4 rounded border-secondary-300 text-primary-600 focus:ring-primary-500;
   }
 }
-
-*/
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer components {
   .form-container {
@@ -21,7 +30,7 @@
   }
 
   .field {
-    @apply mb-4 flex flex-col items-start;
+    @apply mb-4 flex flex-col items-start gap-1;
   }
 
   .submit-button {
@@ -38,5 +47,26 @@
 
   .home-link {
     @apply text-blue-600 hover:text-blue-800 bg-white border border-blue-600 rounded-lg px-6 py-3;
+  }
+
+  /* Prose-like content without @tailwindcss/typography plugin */
+  .ui-prose {
+    @apply max-w-prose text-secondary-700;
+  }
+
+  .ui-prose p {
+    @apply mb-4 leading-relaxed;
+  }
+
+  .ui-prose h1 {
+    @apply mb-4 text-3xl font-bold text-secondary-900;
+  }
+
+  .ui-prose h2 {
+    @apply mb-3 text-2xl font-semibold text-secondary-900;
+  }
+
+  .ui-prose ul {
+    @apply mb-4 list-disc pl-6;
   }
 }

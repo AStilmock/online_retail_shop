@@ -1,6 +1,11 @@
 <div data-controller="login">
-  <h1> Login </h1> 
-  <%= render partial: 'shared/loginform' %>
-  <%= link_to 'Home', users_path, class: "text-blue-600 hover:text-blue-800 bg-white border border-blue-600 rounded px-4 py-2", data: { target: "login.backLink" } %>
+  <h1 class="text-2xl font-bold text-secondary-900 mb-4">Login</h1>
+  <%= render partial: "shared/loginform" %>
+  <%= render Ui::LinkButtonComponent.new(
+        href: users_path,
+        label: "Home",
+        variant: :outline,
+        class: "mt-4",
+        data: { login_target: "backLink" }
+      ) %>
 </div>
-

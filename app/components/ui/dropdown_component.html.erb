@@ -1,0 +1,16 @@
+<div
+  class="relative inline-block text-left"
+  data-controller="dropdown"
+  <%= tag.attributes(html_options.except(:class)) %>
+>
+  <% if button %>
+    <div data-action="click->dropdown#toggle"><%= button %></div>
+  <% end %>
+  <div
+    data-dropdown-target="menu"
+    class="hidden <%= menu_classes %>"
+    role="menu"
+  >
+    <%= content %>
+  </div>
+</div>

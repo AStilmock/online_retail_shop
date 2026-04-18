@@ -1,18 +1,54 @@
 <div data-controller="home">
-  <div data-home-target="message">
-    <h1 class="text-4xl font-bold text-center text-blue-600">
-      WELCOME TO THE TEST ONLINE RETAIL STORE!
-    </h1>
-    <p class="text-base text-gray-600 text-center">
-      All sales are final. And all merchandise is fake.
-    </p>
-  </div>
-
-  <div>
-    <% if current_user %>
-      <%= link_to 'Shopping Page', user_shopping_path(@user.id), data: { home_target: "link" } %>
-    <% else %>
-      <%= link_to 'Shopping Page', shopping_path, data: { home_target: "link" } %>
+  <%= render Ui::CardComponent.new(title: nil, class: "mb-8") do |card| %>
+    <% card.with_header do %>
+      <%= render Ui::BreadcrumbsComponent.new(
+            items: [
+              { label: "Home", url: root_path },
+              { label: "Store" }
+            ],
+            class: "mb-2"
+          ) %>
     <% end %>
-  </div>
+    <div data-home-target="message" class="text-center">
+      <%= render Ui::BadgeComponent.new(label: "Demo", variant: :primary, class: "mb-4") %>
+      <h1 class="text-4xl font-bold text-primary-800 mb-2">
+        WELCOME TO THE TEST ONLINE RETAIL STORE!
+      </h1>
+      <p class="text-base text-secondary-600 mb-6">
+        All sales are final. And all merchandise is fake.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <% if current_user %>
+        <%= render Ui::LinkButtonComponent.new(
+              href: user_shopping_path(@user.id),
+              label: "Shopping Page",
+              variant: :primary,
+              data: { home_target: "link" }
+            ) %>
+      <% else %>
+        <%= render Ui::LinkButtonComponent.new(
+              href: shopping_path,
+              label: "Shopping Page",
+              variant: :primary,
+              data: { home_target: "link" }
+            ) %>
+      <% end %>
+
+      <%= render Ui::ModalComponent.new(title: "Store policy") do |modal| %>
+        <% modal.with_trigger do %>
+          <%= render Ui::ButtonComponent.new(
+                label: "Read policy",
+                type: :button,
+                variant: :outline,
+                data: { action: "click->modal#open" }
+              ) %>
+        <% end %>
+        <p class="ui-prose text-sm">
+          This is a demo storefront. Purchases are simulated; use the UI library components for new screens.
+        </p>
+      <% end %>
+    </div>
+  <% end %>
 </div>
