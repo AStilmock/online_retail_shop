@@ -48,6 +48,9 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 gem "sorcery"
+gem "ruby_llm", "~> 1.12"
+# Spree 5.3+ requires Rails >= 7.2; re-add when upgrading Rails.
+# gem 'spree', '~> 5.3', '>= 5.3.1'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -68,6 +71,9 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
+  # Browse ViewComponent previews in development (no Node)
+  gem "lookbook", ">= 2.0"
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
@@ -78,4 +84,5 @@ end
 
 gem "tailwindcss-rails", "~> 3.0"
 
-gem "ruby_llm", "~> 1.12"
+# Reusable UI components (Tailwind + ERB)
+gem "view_component", "~> 3.0"

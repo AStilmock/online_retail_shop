@@ -1,0 +1,19 @@
+<section class="<%= card_classes %>" <%= tag.attributes(html_options.except(:class)) %>>
+  <% if header %>
+    <div class="border-b border-secondary-100 px-6 py-4">
+      <%= header %>
+    </div>
+  <% elsif title.present? %>
+    <div class="border-b border-secondary-100 px-6 py-4">
+      <h2 class="text-lg font-semibold text-secondary-900"><%= title %></h2>
+    </div>
+  <% end %>
+  <div class="<%= body_classes %>">
+    <%= content %>
+  </div>
+  <% if footer %>
+    <div class="border-t border-secondary-100 px-6 py-4 bg-secondary-50/80 rounded-b-xl">
+      <%= footer %>
+    </div>
+  <% end %>
+</section>

@@ -16,7 +16,9 @@ export default class extends Controller {
         field.classList.add("field");
       });
 
-      const submitButton = this.formTarget.querySelector(".actions input[type='submit']");
+      const submitButton = this.formTarget.querySelector(
+        ".actions input[type='submit'], .actions button[type='submit']"
+      );
       if (submitButton) {
         submitButton.classList.add("submit-button");
       }

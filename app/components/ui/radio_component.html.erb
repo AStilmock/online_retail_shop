@@ -1,0 +1,15 @@
+<div class="flex flex-col gap-1">
+  <div class="flex items-center gap-2">
+    <%= radio_button_tag name, value, checked,
+          id: radio_id,
+          disabled: disabled,
+          class: cn("h-4 w-4 border-secondary-300 text-primary-600 focus:ring-primary-500", html_options[:class]),
+          **html_options.except(:class) %>
+    <% if label.present? %>
+      <label for="<%= radio_id %>" class="text-sm font-medium text-secondary-800"><%= label %></label>
+    <% end %>
+  </div>
+  <% if error? %>
+    <p class="text-sm text-danger-600" role="alert"><%= error %></p>
+  <% end %>
+</div>
